@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  sleek-airflow:
+    image: assignment4_airflow:latest
+    volumes:
+      - ./airflow:/opt/airflow
+    ports:
+      - "8080:8080"
+
+    command: airflow standalone
+
+
+  streamlit:
+    build:
+      context: ./streamlit
+    ports:
+      - "8501:8501"
+    restart: always
