@@ -1,8 +1,13 @@
+""""
+"""
+
+
+
+
 import streamlit as st
 import boto3
 import os
 import requests
-
 
 # Set up AWS credentials
 AWS_ACCESS_KEY_ID = 'your_access_key_id'
@@ -17,24 +22,13 @@ FASTAPI_URL = "http://localhost:8000"
 # Snowflake API service URL
 SNOWFLAKE_API_URL = "http://localhost:8001"
 
-
-def upload_to_s3(file_path):
-    file_name = os.path.basename(file_path)
+def upload_to_s3(file_content, file_name):
     try:
-        # Upload file to S3 bucket
-        s3.upload_file(file_path, S3_BUCKET_NAME, file_name)
+        # Upload file content to S3 bucket
+        s3.put_object(Bucket=S3_BUCKET_NAME, Key=file_name, Body=file_content)
         st.success("File uploaded successfully to S3!")
     except Exception as e:
-        st.error(f"Failed to upload file to S3. Attempting to save locally. Error: {e}")
-        save_locally(file_path)
-
-def save_locally(file_path):
-    # Save file to local directory
-    local_dir = "local_files"
-    os.makedirs(local_dir, exist_ok=True)
-    dest_path = os.path.join(local_dir, os.path.basename(file_path))
-    os.rename(file_path, dest_path)
-    st.success(f"File saved locally: {dest_path}")
+        st.error(f"Failed to upload file to S3. Error: {e}")
 
 def main():
     st.title("PDF File Uploader to S3")
@@ -43,16 +37,10 @@ def main():
     uploaded_file = st.file_uploader("Choose a PDF file", type="pdf")
 
     if uploaded_file is not None:
-        # Save the uploaded file to a temporary location
-        temp_file_path = f"temp/{uploaded_file.name}"
-        with open(temp_file_path, 'wb') as f:
-            f.write(uploaded_file.getbuffer())
-
-        st.success("File uploaded successfully!")
+        st.success("File selected successfully!")
 
         # Upload the file to S3
-        upload_to_s3(temp_file_path)
-
+        upload_to_s3(uploaded_file.getvalue(), uploaded_file.name)
 
         # Trigger Airflow pipeline if file uploaded successfully
         if st.button("Trigger Pipeline"):
@@ -64,7 +52,7 @@ def main():
             else:
                 st.error("Error triggering pipeline")
 
-         # Invoke Snowflake API service to bring back results
+        # Invoke Snowflake API service to bring back results
         if st.button("Fetch Results from Snowflake"):
             query = "SELECT * FROM your_table"
             response = requests.get(f"{SNOWFLAKE_API_URL}/execute_query", params={"query": query})
@@ -79,6 +67,9 @@ def main():
             else:
                 st.error("Error connecting to Snowflake API")
 
+        # Dummy button
+        if st.button("Dummy Button"):
+            st.write("You clicked the Dummy Button!")
 
 if __name__ == "__main__":
     main()
