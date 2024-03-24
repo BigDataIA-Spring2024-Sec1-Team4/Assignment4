@@ -8,7 +8,7 @@ def load_env():
     load_dotenv()
     #grobid_url = os.getenv("GROBID_URL")
     pdf_directory = os.getenv('PDF_DIR_PATH') # Store the downloaded PDF files from S3
-    output_dir = os.getenv("OUTPUT_DIR_PATH") # Store the extracted txt files
+    
     AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
     S3_BUCKET_NAME = os.getenv('S3_BUCKET_NAME')
