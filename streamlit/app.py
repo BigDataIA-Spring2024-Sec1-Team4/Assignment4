@@ -2,11 +2,15 @@ import streamlit as st
 import boto3
 import os
 import requests
+from dotenv import load_dotenv
 
-# Set up AWS credentials
-AWS_ACCESS_KEY_ID = 'your_access_key_id'
-AWS_SECRET_ACCESS_KEY = 'your_secret_access_key'
-S3_BUCKET_NAME = 'your_bucket_name'
+# Load environment variables from .env file
+load_dotenv()
+
+# Get AWS credentials from environment variables
+AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+S3_BUCKET_NAME = os.getenv('S3_BUCKET_NAME')
 
 # Create S3 client
 s3 = boto3.client('s3', aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
