@@ -3,8 +3,15 @@ import requests
 from requests.auth import HTTPBasicAuth
 from pydantic import BaseModel
 from datetime import datetime
+from dotenv import load_dotenv
+import os
+
+# Load environment variables from .env file
+load_dotenv()
 
 app = FastAPI()
+
+airflow_endpoint = os.getenv('airflowurl')
 
 # Define a request model to expect certain JSON payload structure
 class TriggerDAGRequest(BaseModel):
@@ -14,9 +21,10 @@ class TriggerDAGRequest(BaseModel):
 # Endpoint to trigger an Airflow DAG
 @app.post("/trigger-airflow-dag")
 async def trigger_airflow_dag(request_data: TriggerDAGRequest):
-    airflow_url = f"http://localhost:8080/api/v1/dags/{request_data.dag_id}/dagRuns"
-    airflow_username = "airflow"
-    airflow_password = "airflow"
+    airflow_url = f"{airflow_endpoint}/api/v1/dags/{request_data.dag_id}/dagRuns"
+    # airflow_url = f"http://localhost:8080/api/v1/dags/grobid_processing/dagRuns"
+    airflow_username = os.getenv('AIRFLOW_USERNAME')
+    airflow_password = os.getenv('AIRFLOW_PASSWORD')
     
     headers = {
         "Content-Type": "application/json",
