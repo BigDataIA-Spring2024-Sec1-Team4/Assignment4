@@ -1,4 +1,4 @@
-COMPOSE_BASE := docker-compose
+COMPOSE_BASE := docker compose
 LOG_FILE := build.log
 
 init-venv:

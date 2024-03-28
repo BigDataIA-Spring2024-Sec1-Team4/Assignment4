@@ -3,3 +3,4 @@ streamlit-extras
 boto3
 requests
 python-dotenv
+openai==0.28

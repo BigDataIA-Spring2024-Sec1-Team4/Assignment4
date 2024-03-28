@@ -68,7 +68,8 @@ def main():
             st.error(f"Error triggering pipeline: {response.text}")
 
         # Invoke Snowflake API service to bring back results
-        if st.button("Fetch Results from Snowflake"):
+               
+        '''if st.button("Fetch Results from Snowflake"):
             query = "SELECT * FROM your_table"
             response = requests.get(f"{SNOWFLAKE_API_URL}/execute_query", params={"query": query})
             if response.status_code == 200:
@@ -85,6 +86,6 @@ def main():
         # Dummy button
         if st.button("Dummy Button"):
             st.write("You clicked the Dummy Button!")
-
+        '''
 if __name__ == "__main__":
     main()
