@@ -10,7 +10,7 @@ RUN pip install --upgrade pip
 WORKDIR /app
 # Change working dir to app
 
-ADD airflow_invoke.py requirements.txt /app/
+ADD restApi.py requirements.txt /app/
 # Copy main.py and requirements.txt from local into app dir inside the container
 
 RUN pip install -r requirements.txt
