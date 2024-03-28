@@ -8,8 +8,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Get AWS credentials from environment variables
-AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID_ALL')
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY_ALL')
 S3_BUCKET_NAME = os.getenv('S3_BUCKET_NAME')
 
 # Create S3 client
@@ -55,20 +55,21 @@ def main():
 
         # Trigger Airflow pipeline if file uploaded successfully
         if st.button("Trigger Pipeline"):
-            # Upload file to FastAPI service to trigger Airflow pipeline
+            # Define payload here, inside the button's if statement
             payload = {
-            "dag_id": "grobid_processing",  # Replace with your actual DAG ID
-            "conf": {}
-        }
-        # Trigger DAG via FastAPI
-        response = requests.post(f"{FASTAPI_URL}/trigger-airflow-dag", json=payload)  # Updated endpoint
-        if response.status_code in [200, 201]:
-            st.success("Pipeline triggered successfully!")
-        else:
-            st.error(f"Error triggering pipeline: {response.text}")
+                "dag_id": "grobid_processing",  # Replace with your actual DAG ID
+                "conf": {}
+            }
+            # Trigger DAG via FastAPI
+            response = requests.post(f"{FASTAPI_URL}/trigger-airflow-dag", json=payload)
+            if response.status_code in [200, 201]:
+                st.success("Pipeline triggered successfully!")
+            else:
+                st.error(f"Error triggering pipeline: {response.text}")
 
         # Invoke Snowflake API service to bring back results
-        if st.button("Fetch Results from Snowflake"):
+               
+        '''if st.button("Fetch Results from Snowflake"):
             query = "SELECT * FROM your_table"
             response = requests.get(f"{SNOWFLAKE_API_URL}/execute_query", params={"query": query})
             if response.status_code == 200:
@@ -85,6 +86,6 @@ def main():
         # Dummy button
         if st.button("Dummy Button"):
             st.write("You clicked the Dummy Button!")
-
+        '''
 if __name__ == "__main__":
     main()

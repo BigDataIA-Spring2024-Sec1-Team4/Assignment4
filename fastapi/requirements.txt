@@ -3,3 +3,4 @@ requests
 pydantic
 python-dotenv
 uvicorn
+snowflake-connector-python
