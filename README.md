@@ -39,7 +39,74 @@ Develop an end-to-end pipeline utilizing Airflow to automate the extraction and 
 
 ## Project Structure
 
+```
+├── Makefile
+├── README.md
+├── airflow
+│   ├── Dockerfile
+│   ├── config
+│   ├── dags
+│   │   ├── Scripts
+│   │   │   ├── Pipeline_Scripts
+│   │   │   │   ├── Grobid
+│   │   │   │   │   ├── grobid.sh
+│   │   │   │   │   ├── grobid2.sh
+│   │   │   │   │   ├── grobid_process.py
+│   │   │   │   │   ├── requirements.txt
+│   │   │   │   │   ├── txt
+│   │   │   │   │   │   ├── Grobid_2024-l1-topics-combined-2_combined.txt
+│   │   │   │   │   │   ├── Grobid_2024-l2-topics-combined-2_combined.txt
+│   │   │   │   │   │   └── Grobid_2024-l3-topics-combined-2_combined.txt
+│   │   │   │   │   └── xml
+│   │   │   │   │       ├── Grobid_2024-l1-topics-combined-2_combined.xml
+│   │   │   │   │       ├── Grobid_2024-l2-topics-combined-2_combined.xml
+│   │   │   │   │       └── Grobid_2024-l3-topics-combined-2_combined.xml
+│   │   │   │   ├── PyPDF
+│   │   │   │   │   ├── PyPDF
+│   │   │   │   │   │   ├── 2024-l1-topics-combined-2.txt
+│   │   │   │   │   │   ├── 2024-l2-topics-combined-2.txt
+│   │   │   │   │   │   └── 2024-l3-topics-combined-2.txt
+│   │   │   │   │   ├── pypdf.py
+│   │   │   │   │   └── requirements.txt
+│   │   │   │   ├── SnowflakeTransfer
+│   │   │   │   │   └── snowflake_transfer.py
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── grobid_csv.py
+│   │   │   │   ├── parsed_into_schema
+│   │   │   │   │   ├── content
+│   │   │   │   │   │   └── csv
+│   │   │   │   │   │       ├── grobid_content_2024_l1_topics_combined_2.csv
+│   │   │   │   │   │       ├── grobid_content_2024_l2_topics_combined_2.csv
+│   │   │   │   │   │       └── grobid_content_2024_l3_topics_combined_2.csv
+│   │   │   │   │   └── metadata
+│   │   │   │   │       └── csv
+│   │   │   │   │           ├── grobid_metadata_2024_l1_topics_combined_2.csv
+│   │   │   │   │           ├── grobid_metadata_2024_l2_topics_combined_2.csv
+│   │   │   │   │           └── grobid_metadata_2024_l3_topics_combined_2.csv
+│   │   │   │   └── requirements.txt
+│   │   │   ├── Validation.py
+│   │   │   └── __init__.py
+│   │   └── dag.py
+│   ├── docker-compose.yaml
+│   ├── logs
+│   │   └── scheduler
+│   │       ├── 2024-03-28
+│   │       └── latest -> 2024-03-28
+│   └── plugins
+├── docker-compose-local.yaml
+├── fastapi
+│   ├── Dockerfile
+│   ├── requirements.txt
+│   └── restApi.py
+└── streamlit
+    ├── app.py
+    ├── dockerfile
+    ├── fetch_result.py
+    ├── main.py
+    ├── requirements.txt
+    └── snowflake_connector.py
 
+```
 
 
 ## Architectural Diagram
