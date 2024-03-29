@@ -1,5 +1,5 @@
 
-## Assignment 3
+## Assignment 4
 Automated PDF Data Extraction and Querying Pipeline with Airflow and Snowflake Integration
 
 
@@ -39,17 +39,6 @@ Develop an end-to-end pipeline utilizing Airflow to automate the extraction and 
 
 ##  Prerequisites 
 
-
-
-**General Software Prerequisites:**
-
-1. **Python:** Install Python programming language (version 3.x) from the official Python website or using package managers like Anaconda.
-
-2. **Snowflake Account:** Sign up for a Snowflake account or gain access to an existing account with appropriate permissions.
-
-3. **Git:** Install Git version control system for managing project codebase.
-
-   - Download and install Git from the official website: [Git](https://git-scm.com/)
   
  
 ## Project Structure
