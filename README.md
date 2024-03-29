@@ -35,6 +35,12 @@ Develop an end-to-end pipeline utilizing Airflow to automate the extraction and 
 [![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://www.streamlit.io/)
 [![Amazon S3](https://img.shields.io/badge/Amazon%20S3-569A31?style=for-the-badge&logo=amazon-s3&logoColor=white)](https://aws.amazon.com/s3/)
 
+## Project URLs
+
+Airflow: http://34.75.0.13:8080/
+FastAPI: http://34.75.0.13:8095/docs
+Streamlit: http://34.75.0.13:8000/
+Grobid: http://34.75.0.13:8070/
 
 
 ## Project Structure
@@ -143,24 +149,18 @@ Develop an end-to-end pipeline utilizing Airflow to automate the extraction and 
      source venv/bin/activate
      ```
 
-4. **Install Dependencies**: Navigate to the project directory and install the required dependencies.
+4. **Run MakeFile to start Docker Compose**: Start the Docker containers using Docker Compose.
 
    ```bash
-   cd Assignment3
-   pip install -r requirements.txt
+   cd Assignment4
+   make build-up
    ```
 
-5. **Run Docker Compose**: Start the Docker containers using Docker Compose.
+5. **Access Streamlit Interface**: Open your web browser and go to `34.75.0.13:8000` to access the Streamlit interface.
 
-   ```bash
-   docker-compose up -d
-   ```
+6. **Upload PDF to S3**: On the Streamlit homepage, upload a PDF file to S3. After successful upload, trigger the Airflow pipeline.
 
-6. **Access Streamlit Interface**: Open your web browser and go to `localhost:8000` to access the Streamlit interface.
-
-7. **Upload PDF to S3**: On the Streamlit homepage, upload a PDF file to S3. After successful upload, trigger the Airflow pipeline.
-
-8. **Fetch Results**: Navigate to the "Fetch Result" page on the Streamlit interface. Select a table from which you want to retrieve data from Snowflake. Write a prompt and click on "Generate SQL Query". Review the generated SQL query and edit if necessary. Finally, click on "Execute Query" to retrieve the desired data from the Snowflake table.
+7. **Fetch Results**: Navigate to the "Fetch Result" page on the Streamlit interface. Select a table from which you want to retrieve data from Snowflake. Write a prompt and click on "Generate SQL Query". Review the generated SQL query and edit if necessary. Finally, click on "Execute Query" to retrieve the desired data from the Snowflake table.
 
 By following these steps, you should be able to run the application locally and interact with it using the provided Streamlit interface to upload PDF files, trigger data processing pipelines, and query Snowflake for results.
 
