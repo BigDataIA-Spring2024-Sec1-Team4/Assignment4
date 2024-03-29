@@ -37,10 +37,6 @@ Develop an end-to-end pipeline utilizing Airflow to automate the extraction and 
 
 
 
-##  Prerequisites 
-
-  
- 
 ## Project Structure
 
 
@@ -52,7 +48,7 @@ Develop an end-to-end pipeline utilizing Airflow to automate the extraction and 
 
 
 
-## How to run Application locally
+## To run the application locally, follow these steps:
 
 1. **Clone the Repository**: Clone the repository onto your local machine.
 
@@ -79,39 +75,27 @@ Develop an end-to-end pipeline utilizing Airflow to automate the extraction and 
      ```bash
      source venv/bin/activate
      ```
-     
-4. **Host Grobid Server**: Open Docker Desktop and host the Grobid server. (Run this in a separate terminal)
+
+4. **Install Dependencies**: Navigate to the project directory and install the required dependencies.
 
    ```bash
-    docker run -t --rm -p 8070:8070 lfoppiano/grobid:0.8.0
+   cd Assignment3
+   pip install -r requirements.txt
    ```
 
-5. **Run the Execute Script**: Execute the `execute_commands.py` python script to run the application. This step automates the process and runs all scripts one after the other (Remember to add your .env files)
+5. **Run Docker Compose**: Start the Docker containers using Docker Compose.
 
    ```bash
-   python execute_commands.py
+   docker-compose up -d
    ```
 
-6. **Git Clone Astro**: This is required to run DBT Cloud on Airflow
+6. **Access Streamlit Interface**: Open your web browser and go to `localhost:8000` to access the Streamlit interface.
 
-   ```bash
-   brew install astro
-   git clone https://github.com/sungchun12/airflow-dbt-cloud.git
-   ```
-7. **Transfer the dag file into Airflow Directory**: Transfer dag script into the dag folder created through git clone
+7. **Upload PDF to S3**: On the Streamlit homepage, upload a PDF file to S3. After successful upload, trigger the Airflow pipeline.
 
-   ```bash
-   python file_move.py
-   ```
-8. **Run Astro Airflow to run DBT Cloud jobs**: This will run both development and production jobs on DBT Cloud through Airflow. Don't forget to add DBT Cloud API in Airflow connection (conn_id = dbt_cloud)
+8. **Fetch Results**: Navigate to the "Fetch Result" page on the Streamlit interface. Select a table from which you want to retrieve data from Snowflake. Write a prompt and click on "Generate SQL Query". Review the generated SQL query and edit if necessary. Finally, click on "Execute Query" to retrieve the desired data from the Snowflake table.
 
-   ```bash
-   cd airflow-dbt-cloud
-   astro dev start
-   ```
-
-Ensure that all software prerequisites are installed and configured properly before starting the project to avoid any issues during development and execution.
-
+By following these steps, you should be able to run the application locally and interact with it using the provided Streamlit interface to upload PDF files, trigger data processing pipelines, and query Snowflake for results.
 
 
 ## Team Information and Contribution 
