@@ -117,7 +117,7 @@ Grobid: http://34.75.0.13:8070/
 
 ## Architectural Diagram
 
-![image](https://github.com/BigDataIA-Spring2024-Sec1-Team4/Assignment3/assets/114356265/bcd1c1a6-1afb-4de2-a49c-c76ba75b202c)
+![image](https://github.com/BigDataIA-Spring2024-Sec1-Team4/Assignment4/assets/114356265/5f3cf4d9-03b1-4fa6-b291-82b5a0c91597)
 
 
 
@@ -126,7 +126,7 @@ Grobid: http://34.75.0.13:8070/
 1. **Clone the Repository**: Clone the repository onto your local machine.
 
    ```bash
-   git clone https://github.com/BigDataIA-Spring2024-Sec1-Team4/Assignment3
+   git clone https://github.com/BigDataIA-Spring2024-Sec1-Team4/Assignment4
    ```
 
 2. **Create a Virtual Environment**: Set up a virtual environment to isolate project dependencies.
