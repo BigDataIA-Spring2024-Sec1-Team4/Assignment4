@@ -20,7 +20,7 @@ Develop an end-to-end pipeline utilizing Airflow to automate the extraction and 
 
 ## Codelab
 
-[![codelabs](https://img.shields.io/badge/codelabs-4285F4?style=for-the-badge&logo=codelabs&logoColor=white)](https://codelabs-preview.appspot.com/?file_id=1H-NznhIh2AqN8jsjyq399n_NODPnIhcgUE6CWyrsULI#5)
+[![codelabs](https://img.shields.io/badge/codelabs-4285F4?style=for-the-badge&logo=codelabs&logoColor=white)](https://codelabs-preview.appspot.com/?file_id=1GaUW9ixS5DoZZtLuGraSBG1kyH8JeJ18ZtBA3PeZngo#4)
 
 [Demo](https://www.youtube.com/watch?v=ilUbDRxwoWw&ab_channel=AnirudhaJoshi)
 
